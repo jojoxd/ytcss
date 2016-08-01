@@ -1,0 +1,10 @@
+html, body {
+    background-image: none !important;
+    background: var(--background-transparent3) !important;
+}
+
+.yt-uix-button-subscribe-unbranded,
+.yt-uix-button-subscribed-branded,
+.yt-uix-button-subscribed-unbranded {
+	background-image: none !important;
+}

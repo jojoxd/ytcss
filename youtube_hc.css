@@ -1,0 +1,22 @@
+.nbc.xta.spd
+{
+	box-shadow: none!important;
+	border: none !important;
+}
+
+.kbc,
+.GQb > a:not(.zvd) {
+    color: var(--font-color-sub) !important;
+}
+
+html, body, .nbc.xta.spd {
+    background-image: none !important;
+    background: var(--background-transparent3) !important;
+}
+
+a.zvd
+{
+	color: var(--font-color-main) !important;
+	text-shadow: none !important;
+	opacity: 1 !important;
+}

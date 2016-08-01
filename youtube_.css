@@ -1,0 +1,698 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/* @TODO: Fix comment box */
+:root
+{
+	/* White */
+	--font-color-main: rgba(255, 255, 255, 1) !important;
+
+	/* Light-Red */
+	--font-color-sub: rgba(255, 180, 180, 1) !important;
+
+	--ui-red: rgba(200, 0, 0, 1);
+
+	--background-transparent1: rgba(0, 0, 0, 0);
+	--background-transparent2: rgba(0, 0, 0, 0.3);
+	--background-transparent3: rgba(0, 0, 0, 0.7);
+	--background-transparent4: rgba(0, 0, 0, 0.9);
+
+	--background-transparent-sub: rgba(60, 60, 60, 1);
+
+	--background-fallback: rgba(0, 0, 0, 0.9);
+	--background-16-9: url(https://static.vps.jojoxd.nl/YTBackground.jpg);
+	--background-5-4: url(https://static.vps.jojoxd.nl/YTBackground2.png);
+
+	--ytplus-spritesheet: url(https://static.vps.jojoxd.nl/YTPlusSpriteSheet.png);
+
+	--background-solid: black;
+
+	--border-BOXSHADOW2: inset 0px 0px 4px 1px red;
+	--border-BOXSHADOW4: 0px 0px 35px 15px rgba(255, 0, 0, 0);
+
+	--border-color1: 1px solid var(--ui-color) !important;
+	--border-ui: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+/* -- CUSTOM -- */
+
+/* Red styling for youtube-plus */
+#yt-masthead #P
+{
+	background: var(--ytplus-spritesheet) 0 4px !important;
+}
+
+/* Red-colored checkbox for autoplay */
+.yt-uix-checkbox-on-off input[type=checkbox]:checked+label
+{
+	background-color: var(--ui-red) !important;
+}
+
+/* Guide a bunch darker */
+#guide-container
+{
+	background: var(--background-transparent4) !important;
+}
+
+/* Guide item shows background on darker Guide */
+.guide-item
+{
+	background: var(--background-transparent1) !important;
+}
+
+/* Fix transparent background on scrollbar */
+#guide ::-webkit-scrollbar-track
+{
+	background: var(--background-transparent4) !important;
+}
+
+/* Remove border-bottom added by youtube-plus */
+#appbar-guide-menu
+{
+	border-bottom: none !important;
+}
+
+/* Dark topbar */
+#yt-masthead-container
+{
+	background-blend-mode: overlay;
+}
+
+/* Make the nav a little darker */
+#appbar-nav
+{
+	background: var(--background-transparent2) !important;
+}
+
+.comment-simplebox-arrow > .arrow-inner
+{
+	display: none !important;
+}
+
+#masthead-search-terms input
+{
+	background: var(--background-transparent-sub) !important;
+	background-blend-mode: lighten !important;
+	padding-left: 5px !important;
+}
+
+.yt-lockup .yt-lockup-content {
+	padding-left: 5px;
+}
+
+/* -- Background Wallpaper -- */
+
+/* @TODO: Add media query for different image */
+body, url, html,
+#page,
+#yt-masthead-container,
+.yt-uix-overlay-actions,
+#create-channel-identity-lb .yt-dialog-fg.page-use-google-name
+{
+	background: var(--background-transparent4) !important;
+
+	background-position: top center !important;
+	background-attachment: fixed !important;
+	background-repeat: repeat-y !important;
+	background-size: cover !important;
+	border: none !important;
+}
+
+@media screen and (max-aspect-ratio: 16/9) {
+	body, url, html,
+	#page,
+	#yt-masthead-container,
+	.yt-uix-overlay-actions,
+	#create-channel-identity-lb .yt-dialog-fg.page-use-google-name {
+		background-image: var(--background-5-4) !important;
+	}
+}
+
+@media screen and (min-aspect-ratio: 16/9) {
+	body, url, html,
+	#page,
+	#yt-masthead-container,
+	.yt-uix-overlay-actions,
+	#create-channel-identity-lb .yt-dialog-fg.page-use-google-name {
+		background-image: var(--background-16-9) !important;
+	}
+}
+
+.yt-card.yt-card-has-padding,
+.yt-card,
+.watch-stage-mode #theater-background,
+#appbar-guide-menu,
+.yt-uix-expander-ellipsis,
+body #footer-container,
+
+/* playlist */
+.playlist-videos-list,
+#player-playlist :not(.watch-queue-nav) .playlist-videos-list > li.currently-playing,
+.watch-playlist,
+
+/* studio creator > video manager */
+#non-appbar-vm-video-actions-bar,
+#vm-pagination,
+.yt-uix-clickcard-card-border,
+.create-playlist-widget-form .create-playlist-bottom-section,
+
+/*studio creator > community settings */
+#comment-settings .comment-settings-header
+{
+	background: none  !important;
+	background-color: transparent !important;
+}
+
+/* -- Channel navigation / Dropdown navigation (home video playlist) -- */
+
+/* search drop down @TODO: Fix this */
+.gssb_m > tbody:nth-child(1)
+{
+	background: black !important;
+	border: none !important;
+	box-shadow: none !important;
+	background-image: none !important;
+	color: white !important;
+}
+
+td:hover
+{
+	background: var(--background-transparent2) !important;
+	border: none !important;
+	box-shadow: none !important;
+	background-image: none !important;
+	color: white !important;
+}
+
+/* -- Arrow extend front page -- */
+
+/* @TODO: fix arrow on browse channel subscription hover over */
+.yt-gb-shelf-paddle,
+.compact-shelf .yt-uix-button-shelf-slider-pager
+{
+	background-color: transparent !important;
+	filter: brightness(4) !important;
+	border: var(--border-ui) !important;
+}
+
+.yt-gb-shelf:hover .yt-gb-shelf-paddle
+{
+	box-shadow: none !important;
+	filter: brightness(4) !important;
+	opacity: 1 !important;
+}
+
+/* Clearer arrow */
+.compact-shelf .yt-uix-shelfslider-next-arrow,
+.rtl .compact-shelf .yt-uix-shelfslider-prev-arrow,
+.compact-shelf .yt-uix-shelfslider-prev-arrow,
+.rtl .compact-shelf .yt-uix-shelfslider-next-arrow
+{
+	filter: brightness(4);
+}
+
+/* -- ??? --*/
+
+/* categories front page left side */
+.guide-item,
+
+/* singn in button */
+button.yt-uix-button-primary,
+
+/* youtube comment box */
+#yt-comments-sb-standin .box,
+.all-comments,
+.comment-simplebox,
+.comment-simplebox-text,
+
+/*Search bar */
+#masthead-search-terms,
+.yt-uix-button-default,
+
+/* video title ,effects other things on channel page and video suggestions   */
+.yt-ui-ellipsis,
+.yt-lockup,
+.video-list-item,
+
+/* channel search bar */
+.yt-uix-form-input-text,
+
+/* playlist video */
+#player-playlist .playlist-videos-list > li,
+
+/* below for logged in youtube */
+/* dashboard */
+#creator-sidebar,
+.creator-sidebar-section a,
+
+/* in the dashboard tab */
+.dashboard-widget .dashboard-widget-content,
+.dashboard-widget-header:hover,
+a:hover, /* @NOTE: should this be everywhere? */
+.dashboard-widget .dashboard-widget-config,
+.dashboard-widget .dashboard-widget-config .dashboard-widget-header,
+.yt-uix-form-input-select,
+.yt-uix-form-input-select-element,
+
+/* community creator studio */
+.tabbed-page .tab,
+.video-dds .topline,
+
+/* create  creator studio */
+.track-list li.track,
+
+/* subcriptionss tab browse channel */
+.yt-gb-shelf-main-content,
+
+/* subcribe/unsubscribe button on browse channel subrcriptions might effect other things?  */
+.yt-uix-button-subscribe-unbranded,
+.yt-uix-button-subscribed-branded,
+.yt-uix-button-subscribed-unbranded,
+
+/* analytics */
+.OIVISBD-b-d
+{
+	background: var(--background-transparent1) !important;
+	transition: background 0s, box-shadow 0s linear !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* -- Widgets -- */
+
+/* @TODO: Fix later: */
+/* .yt-uix-clickcard-card-border */
+
+.video-dds .list,
+/* when you click your profile picutre thing */
+.yt-uix-clickcard-card-border,
+.yt-masthead-picker-footer,
+
+/* channel page naviagation home videos channel etc */
+#masthead-appbar,
+.branded-page-v2-top-row #channel-subheader
+{
+	background: var(--background-transparent2) !important;
+	transition: background 0s, box-shadow 0s linear, all 3s !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* categories front page left side */
+.guide-item:hover,
+
+/* singin in button */
+button.yt-uix-button-primary:hover,
+
+/* youtube comment box */
+#yt-comments-sb-standin .box:hover,
+
+/*Search bar */
+#masthead-search-terms:hover,
+.yt-uix-button-default:hover,
+
+/* video title, effects other things on channel page and video suggestions */
+.yt-lockup:hover,
+.video-list-item:hover,
+.spf-link.vve-check:hover,
+
+/* Comments */
+.comment-renderer:hover,
+
+/* channel search bar */
+.yt-uix-form-input-text:hover,
+
+/* play list video */
+#player-playlist .playlist-videos-list > li:hover,
+
+/* below for logged in youtube */
+/* dashboard */
+.creator-sidebar-section a:hover,
+
+/* dashboard tab */
+.dashboard-widget .dashboard-widget-content:hover,
+.analytics-sparkline-card:hover,
+
+/* creator studio > create */
+li.track:hover,
+
+/* channel page naviagation home videos channel etc */
+#channel-subheader li:hover
+{
+	background: var(--background-transparent3) !important;
+	/* box-shadow: inset 0px 0px 4px 1px rgb(255, 0, 0)!important; */
+	transition: background 0s, box-shadow 0s linear !important;
+}
+
+/* Button coloring a bit less dark hover background */
+/* button on this page but affects other things */
+/* @TODO: Fix? */
+button:hover
+{
+	background: var(--background-transparent2) !important;
+	/* box-shadow: inset 0px 0px 4px 1px rgb(255, 0, 0)!important; */
+	transition: background 0s, box-shadow 0s linear !important;
+}
+
+/* -- Fonts -- */
+
+/* video titles and descripton thumbnail */
+.yt-ui-ellipsis-2,
+span.title,
+
+/*search bar */
+#masthead-search-terms input,
+
+/* font home trending */
+#appbar-nav .yt-uix-button.yt-uix-button-epic-nav-item,
+#appbar-nav .epic-nav-item-heading,
+
+/* categories side bar front page */
+.guide-item,
+
+/* comment on video and comment box */
+.comments .comment-text .comment-text-content,
+.all-comments,
+#yt-comments-sb-standin .box,
+.comment-renderer-text-content,
+.comment-simplebox-text,
+
+/* channel page about */
+.about-metadata-container,
+.about-stat,
+
+/* page footer @NOTE: Might effect other things */
+#footer-links-primary a,
+#footer-links-secondary a,
+#footer .yt-uix-button-group .yt-uix-button,
+.footer-history,
+#google-help,
+
+/* video page title description etc */
+#watch-headline-title,
+.watch-view-count,
+
+/* video page next playing header */
+.watch-sidebar-head,
+
+p, /* @NOTE: All p tags? */
+.yt-card .yt-uix-button-expander,
+.yt-uix-button-text,
+
+/* channel name on video page */
+#watch-header .yt-user-info a,
+
+/* more add share under video in video page */
+#watch8-action-buttons .yt-uix-button,
+#watch8-action-buttons .yt-uix-button:hover,
+#action-panel-dismiss,
+#action-panel-dismiss:hover,
+
+/* upload button goes across multiple pages */
+#upload-btn,
+
+/* home videos playlist etc on channel page */
+a.yt-uix-button.yt-uix-button-epic-nav-item,
+
+/* channel page selected tab on home,videos playlist etc */
+.epic-nav-item-heading,
+
+/* front page topics/ recommended/popular right now etc */
+.branded-page-module-title a:visited,
+.branded-page-module-title a,
+
+/* channel page name */
+.channel-header .branded-page-header-title .branded-page-header-title-link,
+
+/* channel page text for video featured */
+/* channel home "all acvtivities/recent posts" etc... */
+.yt-uix-button-default,
+
+/* related channels on channel page */
+.branded-page-module-title,
+.branded-page-related-channels h3 a,
+
+/* search filter */
+.filter-col-title,
+.yt-uix-button-content,
+
+/* hover effected text here */
+
+/* channel search video hover */
+.yt-uix-form-input-text:hover,
+
+/* hover for channel page videos playlist on scroll down */
+#appbar-nav .yt-uix-button.yt-uix-button-epic-nav-item:hover,
+
+/* filter */
+.filter:hover,
+
+/* watch playlist */
+.watch-playlist,
+
+/* logged in account */
+
+/* channel tips  box */
+.c4-checklist-module .checklist-item-title-text,
+.c4-checklist-module .view-all-link a,
+.c4-checklist-done-message,
+
+/*dashboard*/
+#creator-sidebar .creator-sidebar-section a,
+.dashboard-widget .dashboard-widget-config,
+.yt-uix-form-input-select,
+.analytics-sparkline-card .infos .title,
+.yt-alert-naked .yt-alert-content,
+dashboard-header-stats, /* @NOTE: shouldn't this be a class/id? */
+#dashboard-header .dashboard-stat-value,
+#dashboard-header .add-widget-button-label,
+#dashboard-header .dashboard-stat-name,
+#dashboard-header .add-widget-button-label,
+#dashboard-header h2 a,
+
+/* videos on creator studio */
+#creator-subheader h2,
+#non-appbar-vm-video-actions-bar .vm-video-actions-inner #vm-view-filter-label,
+.yt-uix-form-label,
+
+/* community on creator studio */
+#comment-settings .comment-settings-subtitle,
+#comment-settings .comment-settings-control-info,
+.acl-target-list-container .none-defined-text,
+.yt-uix-form-list-option li,
+#comment-settings label,
+.creator-subheader-help-text,
+
+/* channel on creator studio */
+.account-features-content,
+.account-content,
+
+/* create on creator studio */
+#main-title,
+.tabbed-page .tab.active,
+.audio-library-tab-subtitle,
+.audiolibrary-column-title,
+.audiolibrary-column-title-expand,
+.audiolibrary-column-duration,
+.audiolibrary-column-artist,
+.audiolibrary-column-genre-and-mood a,
+.audiolibrary-column-genre-and-mood,
+.audiolibrary-column-category a,
+
+/* upload page */
+#upload-button-text,
+#upload-drag-drop-description,
+.upload-other-options-list .upload-option-text,
+.upload-sidebar-header,
+
+/* when you click your profile pic thing */
+.yt-masthead-account-picker.yt-uix-clickcard-card-content,
+
+/* subcriptionss tab browse channel */
+.category-header .category-title
+{
+	color: var(--font-color-main) !important;
+	text-shadow: none !important;
+	opacity: 1 !important;
+}
+
+
+/* @NOTE: maybe needs a fix (redundant code) */
+/* hover off color here */
+
+/* channel search video */
+.yt-uix-form-input-text,
+/* filter search options */
+.filter
+{
+	color: var(--font-color-main) !important;
+}
+
+/* views and date upload thumbnail front page and feature video? */
+ul.yt-lockup-meta-info,
+.video-player-view-component,
+.count,
+
+/* video views upload name on channel page */
+.lohp-video-metadata .view-count,
+
+/* published on video page */
+.watch-time-text,
+
+/* tube commentar name and time post */
+.comments .comment-header .user-name,
+.comments .comment-header .time a,
+
+/* comment reply button */
+.comments .comment-footer-action,
+
+/* other links */
+a.yt-uix-redirect-link,
+
+/* channel name, for channel home page */
+.feed-item-container:hover,
+.feed-item-header a,
+
+/* channel home uploaded a video */
+.feed-item-container .feed-item-main,
+.feed-item-container .feed-item-main:hover,
+.feed-item-container:hover ,
+.feed-item-time,
+
+/* by "channel name" for thumbnail front + video suggestion  */
+.yt-lockup-byline,
+.yt-lockup-byline a,
+.video-list .video-list-item .stat,
+
+/*video description category and license */
+#action-panel-details a,
+#watch-description,
+
+/* results number */
+.search-header .num-results strong,
+
+/* playlist channel name */
+#player-playlist .video-uploader-byline,
+
+/* recommeded for you and by */
+.shelf-annotation,
+
+/* dashboard tab thing */
+#creator-sidebar,
+.creator-sidebar-branding h1,
+.dashboard-widget-header h2,
+.dashboard-widget-header h2 a,
+.analytics-sparkline-card,
+.infos .total,
+.dashboard-widget-display-subtitle,
+h3, /* @NOTE: All h3 tags? */
+
+/* creator studio community */
+.tabbed-page .tab .count,
+
+/* community on creator studio */
+#comment-settings .comment-settings-label,
+
+/* channel on creator studio */
+.account-features-list .account-features-name-section,
+
+/* autoplay label */
+label[for="autoplay-checkbox"],
+
+/* create on creator studio  for non selected tab */
+.tabbed-page .tab,
+
+/* subcriptionss tab browse channel */
+.yt-gb-preview-videos-title,
+.category-header .channel-count,
+
+/* subcribe button on browse channel subrcriptions  */
+/* header for subcribtion or other things ? */
+h2
+{
+	color: var(--font-color-sub) !important;
+	text-shadow: none !important;
+}
+
+/* -- Borders -- */
+
+/* DISABLED */
+
+/* -- MISC -- */
+
+.video-thumb,
+.related-list-item .thumb-wrapper a,
+.yt-thumb
+{
+	transform : scale(0.95, 0.93) !important;
+}
+
+
+/* moving view count below border line and opacity for thumbs   */
+#watch7-views-info
+{
+	bottom: 40px !important;
+}
+
+/* video thumbnail */
+.video-thumb,
+.related-list-item .thumb-wrapper a,
+.yt-thumb,
+
+/* subcriptions browse channels thumbnails  */
+.yt-gb-shelf-item-thumbtab
+{
+	opacity: 0.8 !important;
+	background : none !important;
+}
+
+.video-thumb:hover,
+.related-list-item .thumb-wrapper a:hover,
+/* search icon on channel page */
+#channel-search .show-search .search-icon,
+/* below for logged in youtube */
+/* dashboard */
+#creator-sidebar .creator-sidebar-section a
+{
+	opacity: 1 !important;
+}
+
+/* like dislike buttons need to change ! */
+.like-button-renderer-like-button::before,
+.like-button-renderer-dislike-button::before,
+#action-panel-dismiss::before,
+.action-panel-trigger-dismiss::before,
+
+/* creatir studio play stop button on create also need to fix? */
+.track .play-pause-button.play-visible .track-action-icon,
+.track:hover .play-pause-button.play-hover .track-action-icon,
+.track.expanded .play-pause-button.play-hover .track-action-icon
+{
+	opacity: 1.2 !important;
+	background-color: rgba( 255, 255, 255, 0.0 ) !important;
+}
+
+/* video effects */
+#player .player-api
+{
+	box-shadow: none !important;
+	/*transition :box-shadow  0s, all 1s !important;*/
+}
+
+#player .player-api:hover
+{
+	box-shadow: 0px 0px 35px 15px rgba(255, 0, 0, 0) !important;
+	/*transition :all  0s !important;*/
+}
+
+.yt-card
+{
+	box-shadow: none !important;
+}
+
+/* Hovercard fixes (for hovercard itself, see youtube_hc.css) */
+iframe[src*="hovercard"]
+{
+	box-shadow: none !important;
+	background: transparent !important;
+	/* background: var(--background-transparent3) !important; */
+}
