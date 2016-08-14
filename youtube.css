@@ -1,6 +1,5 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 
-/* @TODO: Fix comment box */
 :root
 {
 	/* White */
@@ -9,29 +8,46 @@
 	/* Light-Red */
 	--font-color-sub: rgba(255, 180, 180, 1) !important;
 
+	/* bright red */
 	--ui-red: rgba(200, 0, 0, 1);
 
+	/* black with various alpha levels */
 	--background-transparent1: rgba(0, 0, 0, 0);
 	--background-transparent2: rgba(0, 0, 0, 0.3);
 	--background-transparent3: rgba(0, 0, 0, 0.7);
 	--background-transparent4: rgba(0, 0, 0, 0.9);
 
+	/* grey-ish */
 	--background-transparent-sub: rgba(60, 60, 60, 1);
 
 	--background-fallback: rgba(0, 0, 0, 0.9);
 	--background-16-9: url(https://static.vps.jojoxd.nl/YTBackground.jpg);
 	--background-5-4: url(https://static.vps.jojoxd.nl/YTBackground2.png);
+	--background-solid: black;
 
 	--ytplus-spritesheet: url(https://static.vps.jojoxd.nl/YTPlusSpriteSheet.png);
-
-	--background-solid: black;
 
 	--border-BOXSHADOW2: inset 0px 0px 4px 1px red;
 	--border-BOXSHADOW4: 0px 0px 35px 15px rgba(255, 0, 0, 0);
 
-	--border-color1: 1px solid var(--ui-color) !important;
+	--border-color1: 1px solid var(--ui-red) !important;
 	--border-ui: 1px solid rgba(255, 255, 255, 0.8) !important;
 }
+
+/*
+	@TODO: move :root { --var } definition to an external css script
+	@TODO: [Maybe] Create a scss file of this, and add a build script
+	@TODO: Fix cursor on comment box (and focus color)
+	@TODO: Add a new spritesheet for youtube ( .yt-sprite )
+	@TODO: text-color on 'show more' on the frontpage
+	@TODO: color of navigation on user / playlist page
+	@TODO: ~WONTFIX: text-color of stats from a playlist
+	@TODO: text-color and background of channel search on channel- home, videos, playlists, channels, discussion, about
+	@TODO: hover- and text-color of 'show more' in library on the sidebar
+	@TODO: find out what is slowing down the page-rendering ( scrolling feels slow when using YTCSS )
+	@TODO: text-color of uploader in comments-title
+	@TODO: Fix search-bar
+ */
 
 /* -- CUSTOM -- */
 
@@ -95,13 +111,41 @@
 	padding-left: 5px !important;
 }
 
-.yt-lockup .yt-lockup-content {
+.yt-lockup .yt-lockup-content
+{
 	padding-left: 5px;
+}
+
+.comment-simplebox-text:hover
+{
+	cursor: text;
+}
+
+.comment-simplebox.focus .comment-simplebox-arrow .arrow-outer
+{
+	border-right-color: var(--ui-red) !important;
+	border-top-color: var(--ui-red) !important;
+}
+
+.comment-simplebox.focus .comment-simplebox-frame
+{
+	border-color: var(--ui-red) !important;
+}
+
+.comment-renderer.channel-owner a.comment-author-text
+{
+	background: transparent !important;
+	text-decoration: underline !important;
+	font-style: italic !important;
+}
+
+.compact-shelf-view-all-card-link-text:hover
+{
+	text-decoration: underline !important;
 }
 
 /* -- Background Wallpaper -- */
 
-/* @TODO: Add media query for different image */
 body, url, html,
 #page,
 #yt-masthead-container,
@@ -158,7 +202,7 @@ body #footer-container,
 /*studio creator > community settings */
 #comment-settings .comment-settings-header
 {
-	background: none  !important;
+	background: none !important;
 	background-color: transparent !important;
 }
 
@@ -174,10 +218,18 @@ body #footer-container,
 	color: white !important;
 }
 
-td:hover
+td:hover:not( [class*='pl-video'] )
 {
 	background: var(--background-transparent2) !important;
 	border: none !important;
+	box-shadow: none !important;
+	background-image: none !important;
+	color: white !important;
+}
+
+tr.pl-video:hover
+{
+	background: var(--background-transparent2) !important;
 	box-shadow: none !important;
 	background-image: none !important;
 	color: white !important;
@@ -247,7 +299,7 @@ button.yt-uix-button-primary,
 /* in the dashboard tab */
 .dashboard-widget .dashboard-widget-content,
 .dashboard-widget-header:hover,
-a:hover, /* @NOTE: should this be everywhere? */
+a:hover:not(.pl-header-play-all-overlay), /* @NOTE: This breaks some overlays (a:hover) */
 .dashboard-widget .dashboard-widget-config,
 .dashboard-widget .dashboard-widget-config .dashboard-widget-header,
 .yt-uix-form-input-select,
@@ -336,20 +388,23 @@ button.yt-uix-button-primary:hover,
 li.track:hover,
 
 /* channel page naviagation home videos channel etc */
-#channel-subheader li:hover
+#channel-subheader li:hover,
+
+/* Channel links */
+.channel-header .about-secondary-links,
+.channel-header .about-custom-links
 {
 	background: var(--background-transparent3) !important;
-	/* box-shadow: inset 0px 0px 4px 1px rgb(255, 0, 0)!important; */
 	transition: background 0s, box-shadow 0s linear !important;
 }
 
-/* Button coloring a bit less dark hover background */
-/* button on this page but affects other things */
-/* @TODO: Fix? */
-button:hover
+/* Button coloring a bit less dark hover background on hover */
+/* @TODO: Re-add like/dislike, playlist buttons (on video page) */
+button.ytp-button:hover,
+a.ytp-button:hover,
+#P.ytplus_sprite
 {
 	background: var(--background-transparent2) !important;
-	/* box-shadow: inset 0px 0px 4px 1px rgb(255, 0, 0)!important; */
 	transition: background 0s, box-shadow 0s linear !important;
 }
 
@@ -376,11 +431,18 @@ span.title,
 .comment-renderer-text-content,
 .comment-simplebox-text,
 
+.comment-renderer-content a.comment-author-text,
+
+/* Playlist */
+.pl-header-title,
+.pl-video .pl-video-title-link,
+.pl-video:hover .pl-video-title-link,
+
 /* channel page about */
 .about-metadata-container,
 .about-stat,
 
-/* page footer @NOTE: Might effect other things */
+/* page footer @NOTE: Might affect other things */
 #footer-links-primary a,
 #footer-links-secondary a,
 #footer .yt-uix-button-group .yt-uix-button,
@@ -426,6 +488,7 @@ a.yt-uix-button.yt-uix-button-epic-nav-item,
 /* channel page text for video featured */
 /* channel home "all acvtivities/recent posts" etc... */
 .yt-uix-button-default,
+.lohp-video-link,
 
 /* related channels on channel page */
 .branded-page-module-title,
@@ -532,11 +595,24 @@ ul.yt-lockup-meta-info,
 .video-player-view-component,
 .count,
 
+/* CC and NEW badges @NOTE Possibly breaks other things that use .yt-badge */
+.yt-badge,
+
 /* video views upload name on channel page */
 .lohp-video-metadata .view-count,
+.lohp-video-metadata .yt-user-name,
 
 /* published on video page */
 .watch-time-text,
+
+/* Playlist */
+.pl-video .pl-video-owner a,
+.pl-video:hover .pl-video-owner a,
+.pl-video .pl-video-time .timestamp,
+#pl-header .pl-header-details a,
+#pl-header .pl-header-details a:hover,
+.compact-shelf-view-all-card-link-text,
+.compact-shelf-view-all-card-link-text:hover,
 
 /* tube commentar name and time post */
 .comments .comment-header .user-name,
@@ -544,6 +620,9 @@ ul.yt-lockup-meta-info,
 
 /* comment reply button */
 .comments .comment-footer-action,
+
+/* comment links */
+.comment-renderer-content a:not(.comment-author-text),
 
 /* other links */
 a.yt-uix-redirect-link,
@@ -607,7 +686,7 @@ label[for="autoplay-checkbox"],
 
 /* subcribe button on browse channel subrcriptions  */
 /* header for subcribtion or other things ? */
-h2
+h2 /* @NOTE: All h2 Tags? */
 {
 	color: var(--font-color-sub) !important;
 	text-shadow: none !important;
@@ -647,8 +726,10 @@ h2
 
 .video-thumb:hover,
 .related-list-item .thumb-wrapper a:hover,
+
 /* search icon on channel page */
 #channel-search .show-search .search-icon,
+
 /* below for logged in youtube */
 /* dashboard */
 #creator-sidebar .creator-sidebar-section a
@@ -656,13 +737,13 @@ h2
 	opacity: 1 !important;
 }
 
-/* like dislike buttons need to change ! */
+/* like dislike buttons need to change! */
 .like-button-renderer-like-button::before,
 .like-button-renderer-dislike-button::before,
 #action-panel-dismiss::before,
 .action-panel-trigger-dismiss::before,
 
-/* creatir studio play stop button on create also need to fix? */
+/* creator studio play stop button on create also need to fix? */
 .track .play-pause-button.play-visible .track-action-icon,
 .track:hover .play-pause-button.play-hover .track-action-icon,
 .track.expanded .play-pause-button.play-hover .track-action-icon
@@ -675,13 +756,11 @@ h2
 #player .player-api
 {
 	box-shadow: none !important;
-	/*transition :box-shadow  0s, all 1s !important;*/
 }
 
 #player .player-api:hover
 {
 	box-shadow: 0px 0px 35px 15px rgba(255, 0, 0, 0) !important;
-	/*transition :all  0s !important;*/
 }
 
 .yt-card
@@ -694,5 +773,4 @@ iframe[src*="hovercard"]
 {
 	box-shadow: none !important;
 	background: transparent !important;
-	/* background: var(--background-transparent3) !important; */
 }
