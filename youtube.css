@@ -17,6 +17,8 @@
 	--background-transparent3: rgba(0, 0, 0, 0.7);
 	--background-transparent4: rgba(0, 0, 0, 0.9);
 
+	--animation-duration: 1.5s;
+
 	/* grey-ish */
 	--background-transparent-sub: rgba(60, 60, 60, 1);
 
@@ -32,6 +34,9 @@
 
 	--border-color1: 1px solid var(--ui-red) !important;
 	--border-ui: 1px solid rgba(255, 255, 255, 0.8) !important;
+
+	/* -- INTERNAL VARIABLE DO NOT CHANGE (GETS OVERRIDDEN) */
+	--player-height: 720px;
 }
 
 /*
@@ -142,6 +147,35 @@
 .compact-shelf-view-all-card-link-text:hover
 {
 	text-decoration: underline !important;
+}
+
+/* Custom Opera Detached View /Controls/ */
+body[data-ytcss-opr-detached="yes"] #player-api,
+body[data-ytcss-opr-detached="yes"] .html5-main-video {
+	/* Keep height, don't mess around with the layout on these */
+	visibility: hidden !important;
+
+	/* Disable input on video */
+	pointer-events: none !important;
+}
+
+body[data-ytcss-opr-detached="yes"] #placeholder-player > .player-api {
+	background: transparent !important;
+}
+
+body[data-ytcss-opr-detached] #watch7-content {
+	-webkit-transition-property: margin-top;
+	-webkit-transition-duration: var(--animation-duration);
+	-webkit-transition-timing-function: ease-in-out;
+
+	transition-property: margin-top;
+	transition-duration: var(--animation-duration);
+	transition-timing-function: ease-in-out;
+}
+
+body[data-ytcss-opr-detached="yes"] #watch7-content {
+	/* Using calc to be able to invert (and use) --player-height */
+	margin-top: calc( 0px - var(--player-height) ) !important;
 }
 
 /* -- Background Wallpaper -- */
