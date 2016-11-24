@@ -57,9 +57,10 @@
 /* -- CUSTOM -- */
 
 /* Red styling for youtube-plus */
-#yt-masthead #P
+#P > svg *,
+.yt-uix-tooltip > svg *
 {
-	background: var(--ytplus-spritesheet) 0 4px !important;
+	fill: red;
 }
 
 /* Red-colored checkbox for autoplay */
