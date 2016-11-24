@@ -27,7 +27,7 @@
 	--background-5-4: url(https://cdn.jojoxd.nl/ytcss/yt-54.jpg);
 	--background-solid: black;
 
-	--ytplus-spritesheet: url(https://static.vps.jojoxd.nl/YTPlusSpriteSheet.png);
+	--ytplus-spritesheet: url(https://cdn.rawgit.com/jojoxd/ytcss/master/YTPlusSpriteSheet.png);
 
 	--border-BOXSHADOW2: inset 0px 0px 4px 1px red;
 	--border-BOXSHADOW4: 0px 0px 35px 15px rgba(255, 0, 0, 0);
