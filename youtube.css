@@ -60,7 +60,7 @@
 #P > svg *,
 .yt-uix-tooltip > svg *
 {
-	fill: red;
+	fill: red !important;
 }
 
 /* Red-colored checkbox for autoplay */
