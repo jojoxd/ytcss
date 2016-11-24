@@ -2,7 +2,7 @@
 // @name         YTCSS
 // @description  Stylesheet for youtube (w/ YT+ support)
 // @namespace    http://jojoxd.nl/ytcss
-// @version      0.3.4
+// @version      0.4.0
 // @encoding     utf-8
 // @license      https://creativecommons.org/licenses/by-sa/4.0/
 // @updateURL    https://raw.githubusercontent.com/jojoxd/ytcss/master/ytcss.user.js
@@ -23,6 +23,17 @@
     'use strict';
 
     GM_addStyle( GM_getResourceText('_css') );
+    
+    // Fix styling for youtube+ (Red styling)
+    document.arrive('#P', function(){
+        console.log("YT Plus Masthead loaded");
+        document.querySelectorAll('#P > svg *').forEach(node => node.style.fill = "red");
+    });
+
+    document.arrive('.yt-uix-tooltip', function(){
+        console.log("YT Plus player options loaded");
+        document.querySelectorAll('.yt-uix-tooltip > svg *').forEach(node => node.style.fill = "red");
+    });
 
     if( window.location.href.indexOf('hovercard') != -1 ){
         console.log('hovercard detected, adding _css_hc');
