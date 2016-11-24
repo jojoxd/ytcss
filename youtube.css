@@ -23,8 +23,8 @@
 	--background-transparent-sub: rgba(60, 60, 60, 1);
 
 	--background-fallback: rgba(0, 0, 0, 0.9);
-	--background-16-9: url(https://static.vps.jojoxd.nl/YTBackground.jpg);
-	--background-5-4: url(https://static.vps.jojoxd.nl/YTBackground2.png);
+	--background-16-9: url(https://cdn.jojoxd.nl/ytcss/yt-169.jpg);
+	--background-5-4: url(https://cdn.jojoxd.nl/ytcss/yt-54.jpg);
 	--background-solid: black;
 
 	--ytplus-spritesheet: url(https://static.vps.jojoxd.nl/YTPlusSpriteSheet.png);
