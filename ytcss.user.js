@@ -2,7 +2,7 @@
 // @name         YTCSS
 // @description  Stylesheet for youtube (w/ YT+ support)
 // @namespace    http://jojoxd.nl/ytcss
-// @version      0.3.1
+// @version      0.3.2
 // @encoding     utf-8
 // @license      https://creativecommons.org/licenses/by-sa/4.0/
 // @updateURL    https://raw.githubusercontent.com/jojoxd/ytcss/master/ytcss.user.js
